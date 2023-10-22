@@ -1,21 +1,18 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react'
 
+import { ThemeProvider } from '@emotion/react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 import { NavigationRoot } from './src/navigation'
+import { lightTheme } from './src/theme'
 
 function App(): JSX.Element {
   return (
-    <SafeAreaProvider>
-      <NavigationRoot />
-    </SafeAreaProvider>
+    <ThemeProvider theme={lightTheme}>
+      <SafeAreaProvider>
+        <NavigationRoot />
+      </SafeAreaProvider>
+    </ThemeProvider>
   )
 }
 
