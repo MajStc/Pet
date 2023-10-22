@@ -25,3 +25,9 @@ return useQuery({
    queryFn: () => request({url: 'example/url', method: 'GET'})
 })
 ```
+
+### Analytics
+
+Project has firebase integrated via `rn-frebase` library. The Firebase Projects are connected to GA4 anlytics account.
+
+TODO: Create Dev/Stage firebase project with Dev/Stage app identificators
