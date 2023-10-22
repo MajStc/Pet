@@ -1,6 +1,7 @@
 import React from 'react'
-import { Button, Text, View } from 'react-native'
+import { Button, Text } from 'react-native'
 
+import styled from '@emotion/native'
 import { useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 
@@ -20,10 +21,16 @@ export const HomeScreen = () => {
   const goToDetails = () => navigation.replace(Route.Details, { id: '1' })
 
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <HomeContainer>
       <Text>Home Screen</Text>
       <Button onPress={goToDetails} title="Go to details" />
       <Button onPress={goToSettings} title="Go to settings" />
-    </View>
+    </HomeContainer>
   )
 }
+
+const HomeContainer = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`
