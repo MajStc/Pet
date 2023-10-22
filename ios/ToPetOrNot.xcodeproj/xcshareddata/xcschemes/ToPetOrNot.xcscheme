@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "AwesomeNoteApp.app"
-               BlueprintName = "AwesomeNoteApp"
-               ReferencedContainer = "container:AwesomeNoteApp.xcodeproj">
+               BuildableName = "ToPetOrNot.app"
+               BlueprintName = "ToPetOrNot"
+               ReferencedContainer = "container:ToPetOrNot.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "AwesomeNoteAppTests.xctest"
-               BlueprintName = "AwesomeNoteAppTests"
-               ReferencedContainer = "container:AwesomeNoteApp.xcodeproj">
+               BuildableName = "ToPetOrNotTests.xctest"
+               BlueprintName = "ToPetOrNotTests"
+               ReferencedContainer = "container:ToPetOrNot.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "AwesomeNoteApp.app"
-            BlueprintName = "AwesomeNoteApp"
-            ReferencedContainer = "container:AwesomeNoteApp.xcodeproj">
+            BuildableName = "ToPetOrNot.app"
+            BlueprintName = "ToPetOrNot"
+            ReferencedContainer = "container:ToPetOrNot.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "AwesomeNoteApp.app"
-            BlueprintName = "AwesomeNoteApp"
-            ReferencedContainer = "container:AwesomeNoteApp.xcodeproj">
+            BuildableName = "ToPetOrNot.app"
+            BlueprintName = "ToPetOrNot"
+            ReferencedContainer = "container:ToPetOrNot.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

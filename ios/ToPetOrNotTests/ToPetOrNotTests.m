@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface AwesomeNoteAppTests : XCTestCase
+@interface ToPetOrNotTests : XCTestCase
 
 @end
 
-@implementation AwesomeNoteAppTests
+@implementation ToPetOrNotTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL (^)(UIView *view))test
 {

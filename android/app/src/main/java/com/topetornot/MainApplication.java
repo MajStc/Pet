@@ -1,4 +1,4 @@
-package com.awesomenoteapp;
+package com.topetornot;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

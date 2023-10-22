@@ -16,6 +16,7 @@ export type HomeScreenNavigationType = StackNavigationProp<
 >
 
 export const HomeScreen = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { data, isLoading } = useReposTannerlinsleyReactQueryGet()
 
   const swithTheme = useThemeState(state => state.switchTheme)
@@ -24,7 +25,7 @@ export const HomeScreen = () => {
   const goToSettings = () => navigation.replace(Route.Settings)
 
   const goToDetails = () => navigation.replace(Route.Details, { id: '1' })
-  console.log(data?.allow_forking, isLoading)
+
   return (
     <HomeContainer>
       <Text>Home Screen</Text>
