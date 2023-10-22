@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1090029343616",
+    "project_id": "topetornot",
+    "storage_bucket": "topetornot.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1090029343616:android:f135fc187aac708a072765",
+        "android_client_info": {
+          "package_name": "com.topetornot"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgyF2k-mODw0GdeA84VycJvrjQpajc77w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
