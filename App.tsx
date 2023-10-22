@@ -4,11 +4,14 @@ import { ThemeProvider } from '@emotion/react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 import { NavigationRoot } from './src/navigation'
-import { lightTheme } from './src/theme'
+import { useThemeState } from './src/state'
+import { darkTheme, lightTheme } from './src/theme'
 
 function App(): JSX.Element {
+  const themeType = useThemeState(state => state.theme)
+
   return (
-    <ThemeProvider theme={lightTheme}>
+    <ThemeProvider theme={themeType === 'dark' ? darkTheme : lightTheme}>
       <SafeAreaProvider>
         <NavigationRoot />
       </SafeAreaProvider>

@@ -7,6 +7,7 @@ import { StackNavigationProp } from '@react-navigation/stack'
 
 import { Route } from '../navigation/routes'
 import { RootStackParamList } from '../navigation/types'
+import { useThemeState } from '../state'
 
 export type HomeScreenNavigationType = StackNavigationProp<
   RootStackParamList,
@@ -14,6 +15,7 @@ export type HomeScreenNavigationType = StackNavigationProp<
 >
 
 export const HomeScreen = () => {
+  const swithTheme = useThemeState(state => state.switchTheme)
   const navigation = useNavigation<HomeScreenNavigationType>()
 
   const goToSettings = () => navigation.replace(Route.Settings)
@@ -25,6 +27,7 @@ export const HomeScreen = () => {
       <Text>Home Screen</Text>
       <Button onPress={goToDetails} title="Go to details" />
       <Button onPress={goToSettings} title="Go to settings" />
+      <Button onPress={swithTheme} title="SwitchTheme" />
     </HomeContainer>
   )
 }
