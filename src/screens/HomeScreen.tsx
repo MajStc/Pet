@@ -4,8 +4,8 @@ import { Button, Text } from 'react-native'
 import styled from '@emotion/native'
 import { useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
-import { useQuery } from 'react-query'
 
+import { useReposTannerlinsleyReactQueryGet } from '../api/endpoints/repos/tannerlinsley/react-query/useReposTannerlinsleyReactQueryGet'
 import { Route } from '../navigation/routes'
 import { RootStackParamList } from '../navigation/types'
 import { useThemeState } from '../state'
@@ -16,12 +16,7 @@ export type HomeScreenNavigationType = StackNavigationProp<
 >
 
 export const HomeScreen = () => {
-  const { data, isLoading } = useQuery<{ allow_forking: boolean }>({
-    queryFn: () =>
-      fetch('https://api.github.com/repos/tannerlinsley/react-query').then(
-        res => res.json(),
-      ),
-  })
+  const { data, isLoading } = useReposTannerlinsleyReactQueryGet()
 
   const swithTheme = useThemeState(state => state.switchTheme)
   const navigation = useNavigation<HomeScreenNavigationType>()
