@@ -12,10 +12,9 @@
 The app is currently working with default flipper sdk which is
 
 - 0.182.0 on android
-- 0.182.0 on iOS (removed currently for rnfirebase)
+- 0.182.0 on iOS
 
 This flipper SDK works with flipper desktop app with version of 0.225.0 (latter not tested)
-Flipper does not work for iOS where it was disabled because of rnfirebase look https://rnfirebase.io/
 
 ### Adding new endpoints
 
@@ -31,9 +30,3 @@ return useQuery({
    queryFn: () => request({url: 'example/url', method: 'GET'})
 })
 ```
-
-### Analytics
-
-Project has firebase integrated via `rn-frebase` library. The Firebase Projects are connected to GA4 anlytics account.
-
-TODO: Create Dev/Stage firebase project with Dev/Stage app identificators
