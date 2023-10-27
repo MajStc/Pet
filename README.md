@@ -1,3 +1,8 @@
+### Setting up th app
+
+1. `yarn`
+2. `npx pod-install`
+
 ### To start the app run:
 
 `yarn start` This command also cleans watchman cache which usually just results in deprecated warnings, so we get rid of it.
@@ -7,9 +12,10 @@
 The app is currently working with default flipper sdk which is
 
 - 0.182.0 on android
-- 0.182.0 on iOS
+- 0.182.0 on iOS (removed currently for rnfirebase)
 
 This flipper SDK works with flipper desktop app with version of 0.225.0 (latter not tested)
+Flipper does not work for iOS where it was disabled because of rnfirebase look https://rnfirebase.io/
 
 ### Adding new endpoints
 

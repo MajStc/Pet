@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { ThemeProvider } from '@emotion/react'
+import { QueryClientProvider } from '@tanstack/react-query'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
-import { QueryClientProvider } from 'react-query'
 
 import { queryClient } from './src/api'
 import { NavigationRoot } from './src/navigation'
