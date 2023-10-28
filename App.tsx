@@ -15,7 +15,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { queryClient } from './src/api'
 import { NavigationRoot } from './src/navigation'
 import { useThemeState } from './src/state'
-import { darkTheme, lightTheme } from './src/theme'
+import { theme } from './src/theme'
 
 Sentry.init({
   dsn: SENTRY_DSN,
@@ -47,7 +47,7 @@ function App(): JSX.Element {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={themeType === 'dark' ? darkTheme : lightTheme}>
+      <ThemeProvider theme={theme(themeType)}>
         <SafeAreaProvider>
           <NavigationRoot />
         </SafeAreaProvider>

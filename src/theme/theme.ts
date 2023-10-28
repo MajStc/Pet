@@ -1,20 +1,14 @@
+import { ColorsThemeType, darkTheme, lightTheme } from './colorsTheme'
+import { textTheme, TextTheme } from './textTheme'
+
 export type MainThemeType = {
-  colors: {
-    primary: string
-    secondary: string
+  colors: ColorsThemeType
+  typography: TextTheme
+}
+
+export const theme = (variant: 'light' | 'dark'): MainThemeType => {
+  return {
+    colors: variant === 'dark' ? darkTheme : lightTheme,
+    typography: textTheme,
   }
-}
-
-export const lightTheme: MainThemeType = {
-  colors: {
-    primary: '#FF0000',
-    secondary: '#FFFFFF',
-  },
-}
-
-export const darkTheme: MainThemeType = {
-  colors: {
-    primary: '#FFFFFF',
-    secondary: '#000000',
-  },
 }

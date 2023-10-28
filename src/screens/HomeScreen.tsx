@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Text } from 'react-native'
+import { Button } from 'react-native'
 
 import styled from '@emotion/native'
 import { useNavigation } from '@react-navigation/native'
@@ -10,6 +10,7 @@ import { useReposTannerlinsleyReactQueryGet } from '../api/endpoints/repos/tanne
 import { Route } from '../navigation/routes'
 import { RootStackParamList } from '../navigation/types'
 import { useThemeState } from '../state'
+import { Text } from '../ui/Text'
 
 export type HomeScreenNavigationType = StackNavigationProp<
   RootStackParamList,
@@ -31,7 +32,12 @@ export const HomeScreen = () => {
 
   return (
     <HomeContainer>
-      <Text>Home Screen</Text>
+      <Text size="big" variant="header">
+        Home Screen as header big
+      </Text>
+      <Text size="small" variant="body">
+        Home Screen as body small
+      </Text>
       <Button onPress={goToDetails} title="Go to details" />
       <Button onPress={goToSettings} title="Go to settings" />
       <Button onPress={swithTheme} title="SwitchTheme" />
