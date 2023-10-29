@@ -30,3 +30,13 @@ return useQuery({
    queryFn: () => request({url: 'example/url', method: 'GET'})
 })
 ```
+
+# Releasing
+
+### iOS
+
+This project uses match to orchestrate certificates and provisioning profiles workflow
+
+When setting up new machine all you need to do is `fastlane match <env> --readonly`
+
+Whenever something gets messed up you can just **nuke** the certs.
