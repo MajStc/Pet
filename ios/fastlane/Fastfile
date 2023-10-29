@@ -10,8 +10,8 @@ lane :incrementBuildNumberGlobal do
 
   
   
-  commitMessage="Auto commit version "+tagName
   tagName = version+"+"+build_number
+  commitMessage="Auto commit version "+tagName
   git_add(path: "../", shell_escape: false)
   git_commit(path: "../", message: commitMessage)
   add_git_tag(
