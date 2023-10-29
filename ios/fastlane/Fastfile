@@ -14,19 +14,19 @@ lane :incrementBuildNumberGlobal do
     tag: tagName
   )
 
-  # Not using fastlange git commands here because they are directory specific
-  # To much effort to just add and commit all files...
   commitMessage="Auto commit version "+tagName
-  sh "cd ../.. && git add . && git commit -m #@commitMessage"
-  sh "ls"
-  # git_add
-  # system("cd ../.. \
-  #         && \
-  #         git add . \
-  #         && \
-  #         git commit -m \"#@commitMessage\" \
-  #         git push origin master \
-  #         git push origin --tags")
+  git_add(path: "../", shell_escape: false)
+  git_commit(path: "../", message: commitMessage)
+  push_to_git_remote(
+  remote: "origin",         # optional, default: "origin"
+  local_branch: "master",  # optional, aliased by "branch", default is set to current branch
+  remote_branch: "master", # optional, default is set to local_branch
+  force: true,    # optional, default: false
+  force_with_lease: true,   # optional, default: false
+  tags: true,    # optional, default: true
+  no_verify: true,# optional, default: false
+  set_upstream: true        # optional, default: false
+)
 end
 
 lane :betaAll do
