@@ -17,13 +17,16 @@ lane :incrementBuildNumberGlobal do
   # Not using fastlange git commands here because they are directory specific
   # To much effort to just add and commit all files...
   commitMessage="Auto commit version "+tagName
-  system("cd ../.. \
-          && \
-          git add . \
-          && \
-          git commit -m \"#@commitMessage\" \
-          git push origin master \
-          git push origin --tags")
+  sh "cd ../.. && git add . && git commit -m #@commitMessage"
+  sh "ls"
+  # git_add
+  # system("cd ../.. \
+  #         && \
+  #         git add . \
+  #         && \
+  #         git commit -m \"#@commitMessage\" \
+  #         git push origin master \
+  #         git push origin --tags")
 end
 
 lane :betaAll do
