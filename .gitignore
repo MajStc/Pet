@@ -66,4 +66,4 @@ yarn-error.log
 /coverage
 
 # fastlane envs
-./ios/fastlane/.env.default
+.env.default
