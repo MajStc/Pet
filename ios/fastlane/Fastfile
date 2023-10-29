@@ -4,7 +4,7 @@ platform :ios do
   lane :beta do
     setup_ci if ENV['CI']
     # Get latest certs appstore
-    match(type: 'appstore', readonly: true)
+    match(type: 'appstore', readonly: true, git_basic_authorization: ENV['MATCH_GIT_BASIC_AUTHORIZATION'])
     
     increment_build_number(xcodeproj: "ToPetOrNot.xcodeproj")
     # build_app(scheme: "ToPetOrNot")
