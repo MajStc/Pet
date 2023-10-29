@@ -6,10 +6,10 @@ on:
 jobs:
   build:
     runs-on: macos-latest
+    defaults:
+      run: working-directory:./ios
     steps:
       - uses: actions/checkout@v2
-      - with:
-          working-directory: ./ios
       - run: fastlane beta
         env:
           MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
