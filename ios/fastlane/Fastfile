@@ -4,6 +4,26 @@ lane :incrementBuildNumberGlobal do
   puts "Change package.json build number"
   system("cd ../.. && jq -e '.build += 1' 'package.json' > 'package.json.tmp' && cp package.json.tmp package.json && rm -f package.json.tmp")
   increment_build_number(xcodeproj: "ToPetOrNot.xcodeproj")
+
+  version = get_version_number(xcodeproj: "ToPetOrNot.xcodeproj")
+  build_number = get_build_number(xcodeproj: "ToPetOrNot.xcodeproj")
+
+  tagName = version+"+"+build_number
+
+  add_git_tag(
+    tag: tagName
+  )
+
+  # Not using fastlange git commands here because they are directory specific
+  # To much effort to just add and commit all files...
+  commitMessage="Auto commit version "+tagName
+  system("cd ../.. \
+          && \
+          git add . \
+          && \
+          git commit -m \"#@commitMessage\" \
+          git push origin master \
+          git push origin --tags")
 end
 
 lane :betaAll do
