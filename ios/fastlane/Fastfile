@@ -8,15 +8,15 @@ lane :incrementBuildNumberGlobal do
   version = get_version_number(xcodeproj: "ToPetOrNot.xcodeproj")
   build_number = get_build_number(xcodeproj: "ToPetOrNot.xcodeproj")
 
+  
+  
+  commitMessage="Auto commit version "+tagName
   tagName = version+"+"+build_number
-
+  git_add(path: "../", shell_escape: false)
+  git_commit(path: "../", message: commitMessage)
   add_git_tag(
     tag: tagName
   )
-
-  commitMessage="Auto commit version "+tagName
-  git_add(path: "../", shell_escape: false)
-  git_commit(path: "../", message: commitMessage)
   push_to_git_remote(
   remote: "origin",         # optional, default: "origin"
   local_branch: "master",  # optional, aliased by "branch", default is set to current branch
