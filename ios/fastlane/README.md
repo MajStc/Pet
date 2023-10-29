@@ -13,12 +13,26 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 # Available Actions
 
-## iOS
-
-### ios beta
+### incrementBuildNumberGlobal
 
 ```sh
-[bundle exec] fastlane ios beta
+[bundle exec] fastlane incrementBuildNumberGlobal
+```
+
+
+
+### betaAll
+
+```sh
+[bundle exec] fastlane betaAll
+```
+
+
+
+### betaiOS
+
+```sh
+[bundle exec] fastlane betaiOS
 ```
 
 

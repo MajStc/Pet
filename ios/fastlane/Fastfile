@@ -1,38 +1,48 @@
 default_platform(:ios)
 
-platform :ios do
-  lane :beta do
-    match(type: 'appstore', readonly: true)
-    
-    increment_build_number(xcodeproj: "ToPetOrNot.xcodeproj")
-    gym(scheme: "ToPetOrNot", configuration: "Release")
-
-    upload_to_testflight(username: ENV['FASTLANE_USER'], skip_waiting_for_build_processing: true)    
-
-    version = get_version_number(xcodeproj: "ToPetOrNot.xcodeproj")
-    build_number = get_build_number(xcodeproj: "ToPetOrNot.xcodeproj")
-    jsbundle = '/Users/prv/Library/Developer/Xcode/DerivedData/ToPetOrNot-gblkffjsvbdaygeeuokjnnphjhpk/Build/Products/Release-iphonesimulator/ToPetOrNot.app/main.jsbundle'
-
-    sentry_upload_sourcemap(
-      auth_token: ENV['SENTRY_AUTH_TOKEN'],
-      org_slug: ENV['SENTRY_ORG'],
-      project_slug: ENV['SENTRY_PROJECT'],
-      app_identifier: 'com.topetornot',
-      version: version,
-      dist: build_number,
-      sourcemap: [jsbundle, './ios.jsbundle.map'],
-    )
-
-    sentry_upload_dsym(
-      auth_token: ENV['SENTRY_AUTH_TOKEN'],
-      org_slug: ENV['SENTRY_ORG'],
-      project_slug: ENV['SENTRY_PROJECT'],
-      dsym_path: './ToPetOrNot.app.dSYM.zip',
-    )
-
-    exec("rm -f ios.jsbundle.map \
-          rm -f ToPetOrNot.ipa \
-          rm -f ToPetOrNot.app.dSYM.zip \
-          rm -f \"#@jsbundle\")
-  end
+lane :incrementBuildNumberGlobal do
+  puts "Change package.json build number"
+  system("cd ../.. && jq -e '.build += 1' 'package.json' > 'package.json.tmp' && cp package.json.tmp package.json && rm -f package.json.tmp")
+  increment_build_number(xcodeproj: "ToPetOrNot.xcodeproj")
 end
+
+lane :betaAll do
+  incrementBuildNumberGlobal
+  betaiOS
+end
+
+
+lane :betaiOS do
+  match(type: 'appstore', readonly: true)
+  
+  gym(scheme: "ToPetOrNot", configuration: "Release")
+
+  upload_to_testflight(username: ENV['FASTLANE_USER'], skip_waiting_for_build_processing: true)    
+
+  version = get_version_number(xcodeproj: "ToPetOrNot.xcodeproj")
+  build_number = get_build_number(xcodeproj: "ToPetOrNot.xcodeproj")
+  jsbundle = '/Users/prv/Library/Developer/Xcode/DerivedData/ToPetOrNot-gblkffjsvbdaygeeuokjnnphjhpk/Build/Products/Release-iphonesimulator/ToPetOrNot.app/main.jsbundle'
+
+  sentry_upload_sourcemap(
+    auth_token: ENV['SENTRY_AUTH_TOKEN'],
+    org_slug: ENV['SENTRY_ORG'],
+    project_slug: ENV['SENTRY_PROJECT'],
+    app_identifier: 'com.topetornot',
+    version: version,
+    dist: build_number,
+    sourcemap: [jsbundle, './ios.jsbundle.map'],
+  )
+
+  sentry_upload_dsym(
+    auth_token: ENV['SENTRY_AUTH_TOKEN'],
+    org_slug: ENV['SENTRY_ORG'],
+    project_slug: ENV['SENTRY_PROJECT'],
+    dsym_path: './ToPetOrNot.app.dSYM.zip',
+  )
+
+  exec("rm -f ios.jsbundle.map \
+        rm -f ToPetOrNot.ipa \
+        rm -f ToPetOrNot.app.dSYM.zip \
+        rm -f \"#@jsbundle\"")
+end
+
