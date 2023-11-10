@@ -6,8 +6,8 @@ lane :incrementJsonBuildNumber do
 end
 
 lane :gitUpdate do
-  version = lane_context[SharedValues:VERSION_NUMBER]
-  build_number = lane_context[SharedValues:BUILD_NUMBER]
+  version = lane_context[SharedValues::VERSION_NUMBER]
+  build_number = lane_context[SharedValues::BUILD_NUMBER]
 
   tagName = version+"+"+build_number
   commitMessage="Auto commit version "+tagName
