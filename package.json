@@ -1,7 +1,7 @@
 {
   "name": "topetornot",
   "version": "0.0.0",
-  "build": 59,
+  "build": 64,
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "start": "watchman watch-del-all && react-native start",
     "test": "jest",
-    "release": "fastlane base && cd ios && fastlane betaAll"
+    "buildNumberRelease": "fastlane buildNumberRelease"
   },
   "dependencies": {
     "@emotion/native": "11.11.0",

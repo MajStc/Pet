@@ -1,30 +1,13 @@
+# IMPORTANT
+# this fastfile is used from client-app directory
+# so all paths are relative to /client-app
+
 default_platform(:ios)
 
-lane :incrementBuildNumberGlobal do
-  package = load_json(json_path: "../package.json")
-  increment_build_number(xcodeproj: "ToPetOrNot.xcodeproj", build_number: package["build"])
-  increment_version_number(xcodeproj: "ToPetOrNot.xcodeproj", version_number: package["version"])
-
-  version = get_version_number(xcodeproj: "ToPetOrNot.xcodeproj")
-  build_number = get_build_number(xcodeproj: "ToPetOrNot.xcodeproj")
-
-  tagName = version+"+"+build_number
-  commitMessage="Auto commit version "+tagName
-  git_add(path: "../", shell_escape: false)
-  git_commit(path: "../", message: commitMessage)
-  add_git_tag(
-    tag: tagName
-  )
-  push_to_git_remote(
-  remote: "origin",         # optional, default: "origin"
-  local_branch: "master",  # optional, aliased by "branch", default is set to current branch
-  remote_branch: "master", # optional, default is set to local_branch
-  force: true,    # optional, default: false
-  force_with_lease: true,   # optional, default: false
-  tags: true,    # optional, default: true
-  no_verify: true,# optional, default: false
-  set_upstream: true        # optional, default: false
-)
+lane :updateBuildVersionAndNumber do
+  package = load_json(json_path: "package.json")
+  increment_build_number(xcodeproj: "ios/ToPetOrNot.xcodeproj", build_number: package["build"])
+  increment_version_number(xcodeproj: "ios/ToPetOrNot.xcodeproj", version_number: package["version"])
 end
 
 lane :betaAll do

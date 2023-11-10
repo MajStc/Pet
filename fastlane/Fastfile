@@ -1,5 +1,50 @@
-lane :base do
+import ('../ios/fastlane/Fastfile')
+
+lane :incrementJsonBuildNumber do
   puts "Change package.json build number"
   system("cd .. && jq -e '.build += 1' 'package.json' > 'package.json.tmp' && cp package.json.tmp package.json && rm -f package.json.tmp")
+end
+
+lane :updateIOS do
+  # From ios fastfile
+  updateBuildVersionAndNumber
+end
+
+lane :gitUpdate do
+  package = load_json(json_path: "../package.json")
+  version = package["version"]
+  build_number = package["build"]
+
+  tagName = version+"+"+build_number
+  commitMessage="Auto commit version "+tagName
+  git_add(path: "../", shell_escape: false)
+  git_commit(path: "../", message: commitMessage)
+  add_git_tag(
+    tag: tagName
+  )
+  push_to_git_remote(
+    remote: "origin",         # optional, default: "origin"
+    local_branch: "master",  # optional, aliased by "branch", default is set to current branch
+    remote_branch: "master", # optional, default is set to local_branch
+    force: true,    # optional, default: false
+    force_with_lease: true,   # optional, default: false
+    tags: true,    # optional, default: true
+    no_verify: true,# optional, default: false
+    set_upstream: true        # optional, default: false
+  )
+end
+
+lane :buildNumberRelease do
+  incrementJsonBuildNumber
+  updateIOS
+end
+
+lane :patchRelease do
+end
+
+lane :minorRelease do
+end
+
+lane :majorRelease do
 end
 
