@@ -4,18 +4,13 @@
 
 default_platform(:ios)
 
-lane :updateBuildVersionAndNumber do
+lane :updateIOSBuildVersionAndNumber do
   package = load_json(json_path: "package.json")
   increment_build_number(xcodeproj: "ios/ToPetOrNot.xcodeproj", build_number: package["build"])
   increment_version_number(xcodeproj: "ios/ToPetOrNot.xcodeproj", version_number: package["version"])
 end
 
-lane :betaAll do
-  incrementBuildNumberGlobal
-  betaiOS
-end
-
-lane :betaiOS do
+lane :buildAndUploadIOS do
   match(type: 'appstore', readonly: true)
   
   gym(scheme: "ToPetOrNot", configuration: "Release")

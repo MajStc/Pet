@@ -5,11 +5,6 @@ lane :incrementJsonBuildNumber do
   system("cd .. && jq -e '.build += 1' 'package.json' > 'package.json.tmp' && cp package.json.tmp package.json && rm -f package.json.tmp")
 end
 
-lane :updateIOS do
-  # From ios fastfile
-  updateBuildVersionAndNumber
-end
-
 lane :gitUpdate do
   package = load_json(json_path: "../package.json")
   version = package["version"]
@@ -36,7 +31,10 @@ end
 
 lane :buildNumberRelease do
   incrementJsonBuildNumber
-  updateIOS
+  # From ios fastfile
+  updateIOSBuildVersionAndNumber
+  gitUpdate
+  buildIOS
 end
 
 lane :patchRelease do
