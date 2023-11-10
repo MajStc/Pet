@@ -28,7 +28,7 @@ lane :buildAndUploadIOS do
     app_identifier: 'com.topetornot',
     version: version,
     dist: build_number,
-    sourcemap: [jsbundle, '../ios.jsbundle.map'],
+    sourcemap: [jsbundle, 'ios.jsbundle.map'],
   )
 
   sentry_upload_dsym(
@@ -38,9 +38,9 @@ lane :buildAndUploadIOS do
     dsym_path: 'ios/ToPetOrNot.app.dSYM.zip',
   )
 
-  exec("rm -f ../ios.jsbundle.map \
-        rm -f ../ToPetOrNot.ipa \
-        rm -f ../ToPetOrNot.app.dSYM.zip \
+  exec("rm -f ios.jsbundle.map \
+        rm -f ToPetOrNot.ipa \
+        rm -f ToPetOrNot.app.dSYM.zip \
         rm -f \"#@jsbundle\"")
 end
 
