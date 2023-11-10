@@ -6,11 +6,10 @@ lane :incrementJsonBuildNumber do
 end
 
 lane :gitUpdate do
-  package = load_json(json_path: "package.json")
-  version = package["version"]
-  build_number = package["build"]
+  version = lane_context[SharedValues:VERSION_NUMBER]
+  build_number = lane_context[SharedValues:BUILD_NUMBER]
 
-  tagName = "#{version}"+"+"+build_number
+  tagName = version+"+"+build_number
   commitMessage="Auto commit version "+tagName
   git_add
   git_commit(message: commitMessage)
