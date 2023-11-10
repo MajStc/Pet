@@ -10,7 +10,7 @@ lane :gitUpdate do
   version = package["version"]
   build_number = package["build"]
 
-  tagName = version+"+"+build_number
+  tagName = "#{version}"+"+"+build_number
   commitMessage="Auto commit version "+tagName
   git_add
   git_commit(message: commitMessage)
