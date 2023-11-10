@@ -45,10 +45,10 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 
 
-### buildNumberRelease
+### buildNumberUpdate
 
 ```sh
-[bundle exec] fastlane buildNumberRelease
+[bundle exec] fastlane buildNumberUpdate
 ```
 
 
