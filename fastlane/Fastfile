@@ -1,0 +1,5 @@
+lane :base do
+  puts "Change package.json build number"
+  system("cd .. && jq -e '.build += 1' 'package.json' > 'package.json.tmp' && cp package.json.tmp package.json && rm -f package.json.tmp")
+end
+
