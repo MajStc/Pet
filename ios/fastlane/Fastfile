@@ -1,15 +1,12 @@
 default_platform(:ios)
 
 lane :incrementBuildNumberGlobal do
-  puts "Change package.json build number"
-  system("cd ../.. && jq -e '.build += 1' 'package.json' > 'package.json.tmp' && cp package.json.tmp package.json && rm -f package.json.tmp")
-  increment_build_number(xcodeproj: "ToPetOrNot.xcodeproj")
+  package = load_json(json_path: "../package.json")
+  increment_build_number(xcodeproj: "ToPetOrNot.xcodeproj", build_number: package["build"])
 
   version = get_version_number(xcodeproj: "ToPetOrNot.xcodeproj")
   build_number = get_build_number(xcodeproj: "ToPetOrNot.xcodeproj")
 
-  
-  
   tagName = version+"+"+build_number
   commitMessage="Auto commit version "+tagName
   git_add(path: "../", shell_escape: false)

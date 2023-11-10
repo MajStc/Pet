@@ -29,14 +29,6 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 
 
-### betaAndroid
-
-```sh
-[bundle exec] fastlane betaAndroid
-```
-
-
-
 ### betaiOS
 
 ```sh
