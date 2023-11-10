@@ -11,8 +11,8 @@ lane :gitUpdate do
 
   tagName = version+"+"+build_number
   commitMessage="Auto commit version "+tagName
-  git_add
-  git_commit(message: commitMessage)
+  git_add(path: ".")
+  git_commit(path: ".", message: commitMessage)
   add_git_tag(
     tag: tagName
   )
