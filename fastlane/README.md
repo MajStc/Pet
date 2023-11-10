@@ -29,6 +29,22 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 
 
+### updateAndroidBuildVersionAndNumber
+
+```sh
+[bundle exec] fastlane updateAndroidBuildVersionAndNumber
+```
+
+
+
+### betaAndroid
+
+```sh
+[bundle exec] fastlane betaAndroid
+```
+
+
+
 ### incrementJsonBuildNumber
 
 ```sh

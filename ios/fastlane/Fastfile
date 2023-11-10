@@ -38,7 +38,8 @@ lane :buildAndUploadIOS do
     dsym_path: 'ToPetOrNot.app.dSYM.zip',
   )
 
-  exec("rm -f ios.jsbundle.map \
+  exec("pwd \
+        rm -f ios.jsbundle.map \
         rm -f ToPetOrNot.ipa \
         rm -f ToPetOrNot.app.dSYM.zip \
         rm -f \"#@jsbundle\"")

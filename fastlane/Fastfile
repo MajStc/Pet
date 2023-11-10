@@ -1,4 +1,5 @@
 import ('../ios/fastlane/Fastfile')
+import ('../android/fastlane/Fastfile')
 
 lane :incrementJsonBuildNumber do
   puts "Change package.json build number"
@@ -33,6 +34,8 @@ lane :buildNumberUpdate do
 
   # From ios fastfile
   updateIOSBuildVersionAndNumber
+  # From android fastfile
+  updateAndroidBuildVersionAndNumber
 
   gitUpdate
 end

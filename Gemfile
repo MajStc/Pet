@@ -7,3 +7,5 @@ gem 'cocoapods', '~> 1.12'
 
 gem "fastlane"
 gem "fastlane-plugin-load_json"
+gem "fastlane-plugin-increment_version_code"
+gem "fastlane-plugin-increment_version_name"
