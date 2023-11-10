@@ -30,10 +30,14 @@ end
 
 lane :buildNumberRelease do
   incrementJsonBuildNumber
+
   # From ios fastfile
   updateIOSBuildVersionAndNumber
+
   gitUpdate
-  buildIOS
+  
+  # From ios fastfile
+  buildAndUploadIOS
 end
 
 lane :patchRelease do
