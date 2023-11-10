@@ -4,7 +4,6 @@ import { Button } from 'react-native'
 import styled from '@emotion/native'
 import { useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
-import * as Sentry from '@sentry/react-native'
 import DeviceInfo from 'react-native-device-info'
 
 import { useReposTannerlinsleyReactQueryGet } from '../api/endpoints/repos/tannerlinsley/react-query/useReposTannerlinsleyReactQueryGet'
@@ -29,8 +28,6 @@ export const HomeScreen = () => {
 
   const goToDetails = () => navigation.replace(Route.Details, { id: '1' })
 
-  const nullArray: any = null
-
   return (
     <HomeContainer>
       <Text size="big" variant="header">
@@ -45,18 +42,6 @@ export const HomeScreen = () => {
       <Button onPress={goToDetails} title="Go to details" />
       <Button onPress={goToSettings} title="Go to settings" />
       <Button onPress={swithTheme} title="SwitchTheme" />
-      <Button
-        onPress={() => {
-          Sentry.nativeCrash()
-        }}
-        title="Native crash"
-      />
-      <Button
-        onPress={() => {
-          nullArray.forEach()
-        }}
-        title="JS crash"
-      />
     </HomeContainer>
   )
 }
