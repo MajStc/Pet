@@ -21,10 +21,10 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 
 
-### betaAndroid
+### buildAndUploadAndroid
 
 ```sh
-[bundle exec] fastlane betaAndroid
+[bundle exec] fastlane buildAndUploadAndroid
 ```
 
 

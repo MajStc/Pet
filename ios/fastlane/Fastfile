@@ -39,9 +39,9 @@ lane :buildAndUploadIOS do
   )
 
   exec("pwd \
-        rm -f ios.jsbundle.map \
-        rm -f ToPetOrNot.ipa \
-        rm -f ToPetOrNot.app.dSYM.zip \
+        rm -f ../ios.jsbundle.map \
+        rm -f ../ToPetOrNot.ipa \
+        rm -f ../ToPetOrNot.app.dSYM.zip \
         rm -f \"#@jsbundle\"")
 end
 
