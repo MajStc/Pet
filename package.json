@@ -1,7 +1,7 @@
 {
   "name": "topetornot",
   "version": "0.0.0",
-  "build": 58,
+  "build": 59,
   "private": true,
   "scripts": {
     "android": "react-native run-android",
