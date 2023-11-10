@@ -61,34 +61,10 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 
 
-### buildNumberUpdate
+### versionAndBuildUpdate
 
 ```sh
-[bundle exec] fastlane buildNumberUpdate
-```
-
-
-
-### patchRelease
-
-```sh
-[bundle exec] fastlane patchRelease
-```
-
-
-
-### minorRelease
-
-```sh
-[bundle exec] fastlane minorRelease
-```
-
-
-
-### majorRelease
-
-```sh
-[bundle exec] fastlane majorRelease
+[bundle exec] fastlane versionAndBuildUpdate
 ```
 
 
