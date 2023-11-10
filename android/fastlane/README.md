@@ -13,34 +13,12 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 # Available Actions
 
-### incrementBuildNumberGlobal
+## Android
+
+### android betaAndroid
 
 ```sh
-[bundle exec] fastlane incrementBuildNumberGlobal
-```
-
-
-
-### betaAll
-
-```sh
-[bundle exec] fastlane betaAll
-```
-
-
-
-### betaAndroid
-
-```sh
-[bundle exec] fastlane betaAndroid
-```
-
-
-
-### betaiOS
-
-```sh
-[bundle exec] fastlane betaiOS
+[bundle exec] fastlane android betaAndroid
 ```
 
 

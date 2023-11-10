@@ -5,6 +5,7 @@ import styled from '@emotion/native'
 import { useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import * as Sentry from '@sentry/react-native'
+import DeviceInfo from 'react-native-device-info'
 
 import { useReposTannerlinsleyReactQueryGet } from '../api/endpoints/repos/tannerlinsley/react-query/useReposTannerlinsleyReactQueryGet'
 import { Route } from '../navigation/routes'
@@ -37,6 +38,9 @@ export const HomeScreen = () => {
       </Text>
       <Text size="small" variant="body">
         Home Screen as body small
+      </Text>
+      <Text size="small" variant="body">
+        {DeviceInfo.getBuildNumber()}
       </Text>
       <Button onPress={goToDetails} title="Go to details" />
       <Button onPress={goToSettings} title="Go to settings" />

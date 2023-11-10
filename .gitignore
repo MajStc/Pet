@@ -67,3 +67,6 @@ yarn-error.log
 
 # fastlane envs
 .env.default
+
+# android service json
+/android/secret-key/*.json

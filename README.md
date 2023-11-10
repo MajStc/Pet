@@ -40,3 +40,13 @@ This project uses match to orchestrate certificates and provisioning profiles wo
 When setting up new machine all you need to do is `fastlane match <env> --readonly`
 
 Whenever something gets messed up you can just **nuke** the certs.
+
+To release new testflight version go to ios directory and run `fastlane betaAll`
+
+Keep in mind releasing new versionName requires manual change at the momet
+
+### Android
+
+To release new testflight version go to android directory and run `fastlane betaAndroid`
+
+Keep in mind releasing new versionName requires manual change at the momet
