@@ -6,14 +6,14 @@ lane :incrementJsonBuildNumber do
 end
 
 lane :gitUpdate do
-  package = load_json(json_path: "../package.json")
+  package = load_json(json_path: "package.json")
   version = package["version"]
   build_number = package["build"]
 
   tagName = version+"+"+build_number
   commitMessage="Auto commit version "+tagName
-  git_add(path: "../", shell_escape: false)
-  git_commit(path: "../", message: commitMessage)
+  git_add
+  git_commit(message: commitMessage)
   add_git_tag(
     tag: tagName
   )

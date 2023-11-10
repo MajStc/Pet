@@ -13,26 +13,18 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 # Available Actions
 
-### updateBuildVersionAndNumber
+### updateIOSBuildVersionAndNumber
 
 ```sh
-[bundle exec] fastlane updateBuildVersionAndNumber
+[bundle exec] fastlane updateIOSBuildVersionAndNumber
 ```
 
 
 
-### betaAll
+### buildAndUploadIOS
 
 ```sh
-[bundle exec] fastlane betaAll
-```
-
-
-
-### betaiOS
-
-```sh
-[bundle exec] fastlane betaiOS
+[bundle exec] fastlane buildAndUploadIOS
 ```
 
 
@@ -41,14 +33,6 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ```sh
 [bundle exec] fastlane incrementJsonBuildNumber
-```
-
-
-
-### updateIOS
-
-```sh
-[bundle exec] fastlane updateIOS
 ```
 
 
