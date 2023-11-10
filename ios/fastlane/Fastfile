@@ -35,7 +35,7 @@ lane :buildAndUploadIOS do
     auth_token: ENV['SENTRY_AUTH_TOKEN'],
     org_slug: ENV['SENTRY_ORG'],
     project_slug: ENV['SENTRY_PROJECT'],
-    dsym_path: 'ios/ToPetOrNot.app.dSYM.zip',
+    dsym_path: 'ToPetOrNot.app.dSYM.zip',
   )
 
   exec("rm -f ios.jsbundle.map \
