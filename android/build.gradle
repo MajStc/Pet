@@ -1,10 +1,5 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
-project.ext.react = [
-    enableHermes: true,
-    hermesFlagsRelease: ["-O", "-output-source-map"], // plus whichever flag was required to set this away from default
-]
-
 buildscript {
     ext {
         buildToolsVersion = "33.0.0"

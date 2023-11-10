@@ -11,6 +11,9 @@ lane :buildAndUploadAndroid do
   key_password = ENV['KEY_PASSWORD']
   releaseFilePath = File.join(Dir.pwd, "..", "/secret-key/secret.keystore")
 
+  build_number = android_get_version_code()
+  version = android_get_version_name()
+
   gradle(task: 'clean')
   gradle(
     task: 'bundle',
@@ -23,9 +26,34 @@ lane :buildAndUploadAndroid do
       "android.injected.signing.key.password" => key_password,
     }
   )
+
   upload_to_play_store(
     track: 'internal',
     track_promote_to: 'alpha'
+  )
+
+  jsbundle = "/Users/prv/Desktop/Pet/android/app/build/generated/assets/createBundleReleaseJsAndAssets/index.android.bundle"
+  jsmap = "/Users/prv/Desktop/Pet/android/app/build/generated/sourcemaps/react/release/index.android.bundle.map"
+
+  sentry_upload_sourcemap(
+    auth_token: ENV['SENTRY_AUTH_TOKEN'],
+    org_slug: ENV['SENTRY_ORG'],
+    project_slug: ENV['SENTRY_PROJECT'],
+    app_identifier: 'com.topetornot',
+    version: version,
+    dist: build_number,
+    sourcemap: [jsbundle, jsmap],
+  )
+
+  mapping = "/Users/prv/Desktop/Pet/android/app/build/outputs/mapping/release/mapping.txt"
+  merged_manifest = "/Users/prv/Desktop/Pet/android/app/build/intermediates/bundle_manifest/release/AndroidManifest.xml"
+
+  sentry_upload_proguard(
+    auth_token: ENV['SENTRY_AUTH_TOKEN'],
+    org_slug: ENV['SENTRY_ORG'],
+    project_slug: ENV['SENTRY_PROJECT'],
+    mapping_path: mapping,
+    android_manifest_path: merged_manifest
   )
 end
 
