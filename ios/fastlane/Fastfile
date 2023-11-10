@@ -13,7 +13,7 @@ end
 lane :buildAndUploadIOS do
   match(type: 'appstore', readonly: true)
   
-  gym(scheme: "ToPetOrNot", configuration: "Release", project: "ToPetOrNot.xcodeproj")
+  gym(scheme: "ToPetOrNot", configuration: "Release")
 
   upload_to_testflight(username: ENV['FASTLANE_USER'], skip_waiting_for_build_processing: true)    
 
