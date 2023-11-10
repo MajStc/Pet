@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button } from 'react-native'
 
 import styled from '@emotion/native'
+import { addEventListener } from '@react-native-community/netinfo'
 import { useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import DeviceInfo from 'react-native-device-info'
@@ -20,6 +21,7 @@ export type HomeScreenNavigationType = StackNavigationProp<
 export const HomeScreen = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { data, isLoading } = useReposTannerlinsleyReactQueryGet()
+  const [connection, setConnection] = useState<string>('')
 
   const swithTheme = useThemeState(state => state.switchTheme)
   const navigation = useNavigation<HomeScreenNavigationType>()
@@ -27,6 +29,14 @@ export const HomeScreen = () => {
   const goToSettings = () => navigation.replace(Route.Settings)
 
   const goToDetails = () => navigation.replace(Route.Details, { id: '1' })
+
+  useEffect(() => {
+    const unsubscribe = addEventListener(state => {
+      setConnection(JSON.stringify(state))
+    })
+
+    return () => unsubscribe()
+  }, [])
 
   return (
     <HomeContainer>
@@ -38,6 +48,9 @@ export const HomeScreen = () => {
       </Text>
       <Text size="small" variant="body">
         {DeviceInfo.getBuildNumber()}
+      </Text>
+      <Text size="small" variant="body">
+        {connection}
       </Text>
       <Button onPress={goToDetails} title="Go to details" />
       <Button onPress={goToSettings} title="Go to settings" />
