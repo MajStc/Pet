@@ -11,6 +11,7 @@ lane :updateIOSBuildVersionAndNumber do
 end
 
 lane :buildAndUploadIOS do
+  sh('pwd')
   match(type: 'appstore', readonly: true)
   
   gym(scheme: "ToPetOrNot", configuration: "Release", project: "/ios/ToPetOrNot.xcodeproj")
