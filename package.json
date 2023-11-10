@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "start": "watchman watch-del-all && react-native start",
     "test": "jest",
-    "release": "fastlane versionAndBuildUpdate"
+    "release": "fastlane versionAndBuildUpdate && cd ios && fastlane buildAndUploadIOS && cd ../android && fastlane buildAndUploadAndroid"
   },
   "dependencies": {
     "@emotion/native": "11.11.0",
