@@ -1,6 +1,15 @@
 import ('../ios/fastlane/Fastfile')
 import ('../android/fastlane/Fastfile')
 
+lane :checkIfRelease do
+  env = sh("cat ../.env | grep APP_ENV")
+  env = env.split("=")[1].strip
+  
+  if env === "debug"
+    UI.user_error!("Remember to change APP_ENV to \"release\"")
+  end
+end
+
 lane :incrementJsonBuildNumber do
   puts "Change package.json build number"
   system("cd .. && jq -e '.build += 1' 'package.json' > 'package.json.tmp' && cp package.json.tmp package.json && rm -f package.json.tmp")
@@ -30,6 +39,7 @@ lane :gitUpdate do
 end
 
 lane :versionAndBuildUpdate do
+  checkIfRelease
   incrementJsonBuildNumber
 
   # From ios fastfile

@@ -45,6 +45,14 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 
 
+### checkIfRelease
+
+```sh
+[bundle exec] fastlane checkIfRelease
+```
+
+
+
 ### incrementJsonBuildNumber
 
 ```sh
