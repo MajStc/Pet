@@ -29,6 +29,8 @@ export const HomeScreen = () => {
 
   const goToDetails = () => navigation.replace(Route.Details, { id: '1' })
 
+  const goToMovies = () => navigation.replace(Route.Movies)
+
   useEffect(() => {
     const unsubscribe = addEventListener(state => {
       setConnection(JSON.stringify(state))
@@ -58,6 +60,7 @@ export const HomeScreen = () => {
       <Button onPress={() => refetch()} title="Refetch" />
       <Button onPress={goToDetails} title="Go to details" />
       <Button onPress={goToSettings} title="Go to settings" />
+      <Button onPress={goToMovies} title="Go to movies" />
       <Button onPress={swithTheme} title="SwitchTheme" />
     </HomeContainer>
   )
