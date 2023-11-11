@@ -7,7 +7,7 @@ import { useNavigation } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import DeviceInfo from 'react-native-device-info'
 
-import { useReposTannerlinsleyReactQueryGet } from '../api/endpoints/repos/tannerlinsley/react-query/useReposTannerlinsleyReactQueryGet'
+import { useMoviesGet } from '../api/endpoints/movies/useMoviesGet'
 import { Route } from '../navigation/routes'
 import { RootStackParamList } from '../navigation/types'
 import { useThemeState } from '../state'
@@ -19,8 +19,7 @@ export type HomeScreenNavigationType = StackNavigationProp<
 >
 
 export const HomeScreen = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { data, isLoading } = useReposTannerlinsleyReactQueryGet()
+  const { data, status, refetch } = useMoviesGet()
   const [connection, setConnection] = useState<string>('')
 
   const swithTheme = useThemeState(state => state.switchTheme)
@@ -52,6 +51,11 @@ export const HomeScreen = () => {
       <Text size="small" variant="body">
         {connection}
       </Text>
+      <Text size="small" variant="body">
+        {JSON.stringify(status)}
+        {JSON.stringify(data)}
+      </Text>
+      <Button onPress={() => refetch()} title="Refetch" />
       <Button onPress={goToDetails} title="Go to details" />
       <Button onPress={goToSettings} title="Go to settings" />
       <Button onPress={swithTheme} title="SwitchTheme" />
@@ -59,9 +63,9 @@ export const HomeScreen = () => {
   )
 }
 
-const HomeContainer = styled.View`
+const HomeContainer = styled.ScrollView`
   flex: 1;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center;
+  justify-content: center; */
   background-color: ${({ theme }) => theme.colors.secondary};
 `

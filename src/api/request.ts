@@ -1,9 +1,12 @@
-export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE'
+import { BASE_API_URL } from './constants'
 
-const BASE_API_URL = 'https://api.github.com/'
+export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'DELETE'
 
 type RequestProps = { url: string; method: HttpMethod }
 
+/**
+ * @param url Remember to start the path with `/`
+ */
 export const request = async ({ url, method }: RequestProps) => {
   const response = await fetch(`${BASE_API_URL}${url}`, { method })
 
