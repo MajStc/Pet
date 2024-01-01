@@ -41,12 +41,12 @@ When setting up new machine all you need to do is `fastlane match <env> --readon
 
 Whenever something gets messed up you can just **nuke** the certs.
 
-To release new testflight version go to ios directory and run `fastlane betaAll`
-
-Keep in mind releasing new versionName requires manual change at the momet
-
 ### Android
 
 To release new testflight version go to android directory and run `fastlane betaAndroid`
 
 Keep in mind releasing new versionName requires manual change at the momet
+
+## Testflight and testing lanes
+
+Run `yarn release`
